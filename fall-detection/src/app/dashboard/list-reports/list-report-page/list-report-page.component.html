@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let item of reportsMenu">
+            <div class="card card-margin">
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-primary">
+                                <span class="widget-49-date-day">{{item.date.day}}</span>
+                                <span class="widget-49-date-month">{{item.date.month}}</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                                <span class="widget-49-pro-title">{{item.name}}</span>
+                                <span class="widget-49-meeting-time">{{item.date.hour}}</span>
+                            </div>
+                        </div>
+                        <ul class="widget-49-meeting-points">
+                            <li class="widget-49-meeting-item"><span>Long : {{item.long}} Lat : {{item.lat}}</span></li>
+                            <li class="widget-49-meeting-item"><span>Status : {{item.status}}</span></li>
+                            <li class="widget-49-meeting-item"><span>Client ID : {{item.clientID}}</span></li>
+                        </ul>
+                        <div class="widget-49-meeting-action">
+                            <a class="btn btn-sm btn-flash-border-primary" routerLink="/dashboard/profile">Client Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
