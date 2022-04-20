@@ -4,8 +4,10 @@ from firebase_admin import credentials, auth
 import json
 from flask import Flask, request
 from functools import wraps
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 cred = credentials.Certificate('fbAdminConfig.json')
 firebase = firebase_admin.initialize_app(cred)
 pb = pyrebase.initialize_app(json.load(open('fbconfig.json')))
@@ -29,7 +31,7 @@ def check_token(f):
 def userinfo():
     return {'data': users}, 200
 
-@app.route("/api/login")
+@app.route("/api/login", methods=["POST"])
 def login():
     content=request.get_json()
     email = content["email"]
@@ -44,7 +46,7 @@ def login():
         return {'message':'Error Email or password is wrong'},400
 
 
-@app.route('/api/signup')
+@app.route('/api/signup', methods=["POST"])
 def signup():
     content=request.get_json()
     email = content["email"]
